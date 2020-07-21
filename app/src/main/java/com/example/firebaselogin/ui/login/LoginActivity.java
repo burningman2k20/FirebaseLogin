@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.firebaselogin.R;
+import com.example.firebaselogin.data.model.LoggedInUser;
 import com.example.firebaselogin.ui.login.LoginViewModel;
 import com.example.firebaselogin.ui.login.LoginViewModelFactory;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -143,8 +144,14 @@ public class LoginActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
+        if (currentUser==null) {
+            System.out.printf("No user logged in yet\n");
+        } else {
+            System.out.printf("%s\n", currentUser.getEmail());
+        }
     }
 
     private void updateUI(FirebaseUser currentUser) {
+
     }
 }
